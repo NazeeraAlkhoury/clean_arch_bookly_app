@@ -10,13 +10,16 @@ class FeatureBooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsetsDirectional.only(start: 12),
+        padding: const EdgeInsetsDirectional.only(start: 20),
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height * .3,
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => const CustomBookListViewItem(),
+            itemBuilder: (context, index) => const Padding(
+              padding: EdgeInsetsDirectional.only(end: 8),
+              child: CustomBookListViewItem(),
+            ),
             itemCount: 5,
           ),
         ),
