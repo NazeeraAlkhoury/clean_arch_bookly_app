@@ -1,6 +1,8 @@
 import 'package:clean_arch_bookly_app/core/utils/app_assets.dart';
+import 'package:clean_arch_bookly_app/core/utils/app_router.dart';
 import 'package:clean_arch_bookly_app/features/splash/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -19,6 +21,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
 
     initializeAnimation();
+    goToHomeView();
   }
 
   @override
@@ -50,6 +53,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
       end: const Offset(0, 0),
     ).animate(curvedAnimation);
     animationController.forward();
+  }
+
+  Future<void> goToHomeView() {
+    return Future.delayed(
+      const Duration(
+        seconds: 2,
+      ),
+      () => context.go(AppRouter.homeViewRoute),
+    );
   }
 
   @override
