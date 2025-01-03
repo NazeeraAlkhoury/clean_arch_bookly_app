@@ -11,7 +11,7 @@ class CustomBookListViewItem extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2.6 / 4,
       child: Container(
-        margin: const EdgeInsetsDirectional.only(start: 8),
+        // margin: const EdgeInsetsDirectional.only(start: 8),
         decoration: BoxDecoration(
           color: Colors.blue,
           image: const DecorationImage(
