@@ -52,17 +52,19 @@ class BestSellerItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        '19.99 €',
-                        style: AppStyles.textStyle20(context).copyWith(
-                          fontWeight: FontWeight.bold,
+                  Flexible(
+                    child: Row(
+                      children: [
+                        Text(
+                          '19.99 €',
+                          style: AppStyles.textStyle20(context).copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                      const CustomBookRating()
-                    ],
+                        const Spacer(),
+                        const CustomBookRating()
+                      ],
+                    ),
                   ),
                 ],
               ),
