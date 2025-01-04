@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/features/home/book_details_view.dart';
 import 'package:clean_arch_bookly_app/features/home/home_view.dart';
 import 'package:clean_arch_bookly_app/features/splash/splash_view.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +17,10 @@ abstract class AppRouter {
       GoRoute(
         path: homeViewRoute,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: bookDetailsViewRoute,
+        builder: (context, state) => const BookDetailsView(),
       ),
     ],
   );
