@@ -1,7 +1,7 @@
 import 'package:clean_arch_bookly_app/core/utils/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/custom_app_bar.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/feature_best_seller.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/feature_books_list_view.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/custom_app_bar.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/feature_best_seller.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/feature_books_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

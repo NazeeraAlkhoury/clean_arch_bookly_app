@@ -1,7 +1,7 @@
 import 'package:clean_arch_bookly_app/core/utils/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/books_action.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/custom_book_list_item.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/custom_book_rating.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/books_action.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/custom_book_list_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/custom_book_rating.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsSection extends StatelessWidget {

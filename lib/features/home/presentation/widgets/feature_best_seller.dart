@@ -1,4 +1,4 @@
-import 'package:clean_arch_bookly_app/features/home/widgets/best_seller_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/best_seller_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

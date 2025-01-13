@@ -1,8 +1,8 @@
 import 'package:clean_arch_bookly_app/constants.dart';
 import 'package:clean_arch_bookly_app/core/utils/app_router.dart';
 import 'package:clean_arch_bookly_app/core/utils/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/custom_book_list_item.dart';
-import 'package:clean_arch_bookly_app/features/home/widgets/custom_book_rating.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/custom_book_list_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/widgets/custom_book_rating.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
