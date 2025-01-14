@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class BaseUseCases<Type, Parameters> {
-  Future<Either<Failure, Type>> call([Parameters parameters]);
+  Future<Either<Failure, Type>> call(Parameters parameters);
 }
 
 class NoParameters extends Equatable {
