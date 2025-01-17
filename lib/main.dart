@@ -1,9 +1,13 @@
+import 'package:clean_arch_bookly_app/core/services/service_locator.dart';
 import 'package:clean_arch_bookly_app/core/utils/app_colors.dart';
 import 'package:clean_arch_bookly_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ServiceLocator().setupServiceLocator();
+
   runApp(const MyApp());
 }
 
