@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/core/functions/print_full_text.dart';
 import 'package:clean_arch_bookly_app/core/services/api_service.dart';
 import 'package:clean_arch_bookly_app/core/network/app_end_pointes.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource.dart';
@@ -9,8 +10,20 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
   HomeRemoteDatasourceImp({required this.apiService});
   @override
   Future<BooksModel> getBooks() async {
-    final response =
-        await apiService.getData(endPoint: AppEndPointes.getBooksEndPoine);
+    final response = await apiService
+        .getData(endPoint: AppEndPointes.baseUrl, queryParameters: {
+      'Filtering': 'free-ebooks',
+      'q': 'subject:Programming',
+    });
+
+    print('================= response ================');
+    printFullText(response.data.toString());
+    print('===============');
     return BooksModel.fromJson(response.data);
+
+    // throw DioException(
+    //   requestOptions: response.requestOptions,
+    //   error: 'حدث خطأ في الاتصال بالخادم:',
+    // );
   }
 }
