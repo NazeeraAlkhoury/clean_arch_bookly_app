@@ -14,15 +14,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _getBooks(GetBooksEvent event, Emitter<HomeState> emit) async {
     final result = await getBooksUseCase(const NoParameters());
+
     result.fold(
       (failure) {
-        state.copyWith(
-          requestState: RequestStates.failureState,
-          errMessage: failure.errorMessage,
+        emit(
+          state.copyWith(
+            requestState: RequestStates.failureState,
+            errMessage: failure.errorMessage,
+          ),
         );
       },
       (books) {
-        state.copyWith(requestState: RequestStates.successState, books: books);
+        emit(
+          state.copyWith(
+            requestState: RequestStates.successState,
+            books: books,
+          ),
+        );
       },
     );
   }

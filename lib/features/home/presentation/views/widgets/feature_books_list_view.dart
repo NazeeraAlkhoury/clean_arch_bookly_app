@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/core/utils/enums.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/controller/home_bloc/home_bloc.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/controller/home_bloc/home_state.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_list_item.dart';
@@ -17,15 +18,30 @@ class FeatureBooksListView extends StatelessWidget {
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height * .3,
           child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-            return ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => const Padding(
-                padding: EdgeInsetsDirectional.only(end: 8),
-                child: CustomBookListViewItem(),
-              ),
-              itemCount: 5,
-            );
+            switch (state.requestState) {
+              case RequestStates.successState:
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    //  final book = state.books?.items[index];
+                    return const Padding(
+                      padding: EdgeInsetsDirectional.only(end: 8),
+                      child: CustomBookListViewItem(
+                          // imageUrl:
+                          //  book?.volumeInfo.imageLinks?.smallThumbnail ?? '',
+                          ),
+                    );
+                  },
+                  itemCount: state.books?.items.length ?? 0,
+                );
+              case RequestStates.failureState:
+                return Center(child: Text(state.errMessage));
+              case RequestStates.loadingState:
+                return const Center(child: CircularProgressIndicator());
+              case RequestStates.initialState:
+                return Center(child: Text(state.errMessage));
+            }
           }),
         ),
       ),
