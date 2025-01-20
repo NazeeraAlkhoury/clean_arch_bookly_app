@@ -26,4 +26,24 @@ class HomeRepositoryImp extends HomeRepository {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, Books>> getNewestBooks() async {
+    try {
+      final result = await homeRemoteDatasource.getNewsetBooks();
+      return right(result);
+    } catch (failure) {
+      if (failure is DioException) {
+        return left(
+          ServerFailure.fromDioError(failure),
+        );
+      } else {
+        return left(
+          ServerFailure(
+            failure.toString(),
+          ),
+        );
+      }
+    }
+  }
 }

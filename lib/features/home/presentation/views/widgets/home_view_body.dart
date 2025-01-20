@@ -15,7 +15,9 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<HomeBloc>()..add(GetBooksEvent()),
+      create: (context) => getIt<HomeBloc>()
+        ..add(GetBooksEvent())
+        ..add(GetNewsetBooksEvent()),
       child: CustomScrollView(
         slivers: [
           const CustomAppBar(),

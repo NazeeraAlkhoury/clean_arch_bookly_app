@@ -1,4 +1,3 @@
-import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/book_details_section.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/simillar_book_section.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class BookDetailsBody extends StatelessWidget {
             child: Column(
               children: [
                 CustomBookDetailsAppBar(),
-                BooksDetailsSection(),
+                // BooksDetailsSection(bookItemData: null,),
                 Expanded(
                   child: SizedBox(
                     height: 50,

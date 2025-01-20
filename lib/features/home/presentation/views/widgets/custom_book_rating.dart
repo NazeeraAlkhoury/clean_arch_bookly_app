@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomBookRating extends StatelessWidget {
+  final num averageRating;
+  final int ratingsCount;
   final MainAxisAlignment mainAxisAlignment;
   const CustomBookRating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.averageRating,
+    required this.ratingsCount,
   });
 
   @override
@@ -25,7 +29,7 @@ class CustomBookRating extends StatelessWidget {
           width: 6.3,
         ),
         Text(
-          '4.8',
+          '$averageRating',
           style: AppStyles.textStyle16(context),
         ),
         const SizedBox(
@@ -34,7 +38,7 @@ class CustomBookRating extends StatelessWidget {
         Opacity(
           opacity: .5,
           child: Text(
-            '(245)',
+            '($ratingsCount)',
             style: AppStyles.textStyle14(context).copyWith(
               fontWeight: FontWeight.w600,
             ),

@@ -13,7 +13,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
     final response = await apiService
         .getData(endPoint: AppEndPointes.baseUrl, queryParameters: {
       'Filtering': 'free-ebooks',
-      'q': 'subject:Programming',
+      'q': 'subject:sport',
     });
 
     printFullText(response.data.toString());
@@ -23,5 +23,17 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
     //   requestOptions: response.requestOptions,
     //   error: 'حدث خطأ في الاتصال بالخادم:',
     // );
+  }
+
+  @override
+  Future<BooksModel> getNewsetBooks() async {
+    final response = await apiService.getData(
+      endPoint: AppEndPointes.baseUrl,
+      queryParameters: {
+        'Filtering': 'free-ebooks',
+        'q': 'subject:Programming',
+      },
+    );
+    return BooksModel.fromJson(response.data);
   }
 }

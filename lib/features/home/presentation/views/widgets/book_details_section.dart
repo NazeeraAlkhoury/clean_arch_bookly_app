@@ -1,12 +1,15 @@
 import 'package:clean_arch_bookly_app/core/utils/app_styles.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity/book_item_data.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/books_action.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_list_item.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_rating.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsSection extends StatelessWidget {
+  final BookItemData bookItemData;
   const BooksDetailsSection({
     super.key,
+    required this.bookItemData,
   });
 
   @override
@@ -47,8 +50,10 @@ class BooksDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        const CustomBookRating(
+        CustomBookRating(
           mainAxisAlignment: MainAxisAlignment.center,
+          averageRating: bookItemData.volumeInfo.averageRating!,
+          ratingsCount: bookItemData.volumeInfo.ratingsCount!,
         ),
         const SizedBox(
           height: 37,

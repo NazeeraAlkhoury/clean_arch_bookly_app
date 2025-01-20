@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
   Future<Either<Failure, Books>> getBooks();
+  Future<Either<Failure, Books>> getNewestBooks();
 }
