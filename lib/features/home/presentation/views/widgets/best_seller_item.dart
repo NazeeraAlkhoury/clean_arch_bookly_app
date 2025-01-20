@@ -23,8 +23,8 @@ class BestSellerItem extends StatelessWidget {
         child: Row(
           children: [
             const CustomBookListViewItem(
-                //   imageUrl: '',
-                ),
+              imageUrl: '',
+            ),
             const SizedBox(
               width: 30,
             ),

@@ -24,13 +24,13 @@ class FeatureBooksListView extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    //  final book = state.books?.items[index];
-                    return const Padding(
-                      padding: EdgeInsetsDirectional.only(end: 8),
+                    final book = state.books?.items[index];
+                    return Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 8),
                       child: CustomBookListViewItem(
-                          // imageUrl:
-                          //  book?.volumeInfo.imageLinks?.smallThumbnail ?? '',
-                          ),
+                        imageUrl:
+                            book?.volumeInfo.imageLinks?.smallThumbnail ?? '',
+                      ),
                     );
                   },
                   itemCount: state.books?.items.length ?? 0,
