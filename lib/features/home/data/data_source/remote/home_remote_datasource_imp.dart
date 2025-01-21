@@ -13,7 +13,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
     final response = await apiService
         .getData(endPoint: AppEndPointes.baseUrl, queryParameters: {
       'Filtering': 'free-ebooks',
-      'q': 'subject:sport',
+      'q': 'computer science',
     });
 
     // printFullText(response.data.toString());
@@ -31,6 +31,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
       endPoint: AppEndPointes.baseUrl,
       queryParameters: {
         'Filtering': 'free-ebooks',
+        'Sorting': 'newest',
         'q': 'subject:Programming',
       },
     );
