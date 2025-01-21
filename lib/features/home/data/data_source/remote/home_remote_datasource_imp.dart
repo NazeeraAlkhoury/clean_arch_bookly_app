@@ -1,4 +1,3 @@
-import 'package:clean_arch_bookly_app/core/functions/print_full_text.dart';
 import 'package:clean_arch_bookly_app/core/services/api_service.dart';
 import 'package:clean_arch_bookly_app/core/network/app_end_pointes.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource.dart';
