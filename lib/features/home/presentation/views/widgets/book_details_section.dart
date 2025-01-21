@@ -19,17 +19,17 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: width * .23,
+            horizontal: width * .25,
           ),
-          child: const CustomBookListViewItem(
-            imageUrl: '',
+          child: CustomBookListViewItem(
+            imageUrl: bookItemData.volumeInfo.imageLinks!.thumbnail,
           ),
         ),
         const SizedBox(
           height: 43,
         ),
         Text(
-          'The Jungle Book',
+          bookItemData.volumeInfo.title,
           style: AppStyles.textStyle30(context).copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -40,7 +40,7 @@ class BooksDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            'Rudyard Kipling',
+            bookItemData.volumeInfo.authors[0],
             style: AppStyles.textStyle18(context).copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,
@@ -52,8 +52,8 @@ class BooksDetailsSection extends StatelessWidget {
         ),
         CustomBookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          averageRating: bookItemData.volumeInfo.averageRating!,
-          ratingsCount: bookItemData.volumeInfo.ratingsCount!,
+          averageRating: bookItemData.volumeInfo.averageRating ?? 0,
+          ratingsCount: bookItemData.volumeInfo.ratingsCount ?? 0,
         ),
         const SizedBox(
           height: 37,

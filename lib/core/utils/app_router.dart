@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity/book_item_data.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/pages/book_details_view.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/pages/home_view.dart';
 import 'package:clean_arch_bookly_app/features/splash/presentation/views/splash_view.dart';
@@ -19,9 +20,13 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: bookDetailsViewRoute,
-        builder: (context, state) => const BookDetailsView(),
-      ),
+          path: bookDetailsViewRoute,
+          builder: (context, state) {
+            final book = state.extra as BookItemData;
+            return BookDetailsView(
+              bookItemData: book,
+            );
+          }),
     ],
   );
 }

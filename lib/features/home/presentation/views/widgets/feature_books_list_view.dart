@@ -16,7 +16,7 @@ class FeatureBooksListView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsetsDirectional.only(start: 20),
         child: SizedBox(
-          height: MediaQuery.sizeOf(context).height * .3,
+          height: MediaQuery.sizeOf(context).height * .27,
           child: BlocBuilder<HomeBloc, HomeState>(
               buildWhen: (previous, current) =>
                   previous.requestState != current.requestState,
