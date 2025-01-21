@@ -14,14 +14,17 @@ class FeatureBestSellerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-        return StateHandlerWidget(
-          state: state.newsetRequestState,
-          successWidget: (context) => BestSellerList(
-            books: state.newsetBooks!,
-          ),
-        );
-      }),
+      child: BlocBuilder<HomeBloc, HomeState>(
+          buildWhen: (previous, current) =>
+              previous.newsetRequestState != current.newsetRequestState,
+          builder: (context, state) {
+            return StateHandlerWidget(
+              state: state.newsetRequestState,
+              successWidget: (context) => BestSellerList(
+                books: state.newsetBooks!,
+              ),
+            );
+          }),
     );
 
     // SliverList.builder(

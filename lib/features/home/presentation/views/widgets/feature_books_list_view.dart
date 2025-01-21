@@ -17,14 +17,17 @@ class FeatureBooksListView extends StatelessWidget {
         padding: const EdgeInsetsDirectional.only(start: 20),
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height * .3,
-          child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-            return StateHandlerWidget(
-              state: state.requestState,
-              successWidget: (context) => BooksListView(
-                books: state.books!,
-              ),
-            );
-          }),
+          child: BlocBuilder<HomeBloc, HomeState>(
+              buildWhen: (previous, current) =>
+                  previous.requestState != current.requestState,
+              builder: (context, state) {
+                return StateHandlerWidget(
+                  state: state.requestState,
+                  successWidget: (context) => BooksListView(
+                    books: state.books!,
+                  ),
+                );
+              }),
         ),
       ),
     );

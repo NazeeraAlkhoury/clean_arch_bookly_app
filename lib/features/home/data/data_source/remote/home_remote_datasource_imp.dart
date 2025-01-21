@@ -16,7 +16,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
       'q': 'subject:sport',
     });
 
-    printFullText(response.data.toString());
+    // printFullText(response.data.toString());
     return BooksModel.fromJson(response.data);
 
     // throw DioException(
