@@ -36,4 +36,15 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
     );
     return BooksModel.fromJson(response.data);
   }
+
+  @override
+  Future<BooksModel> getSimilerBooks() async {
+    final response = await apiService
+        .getData(endPoint: AppEndPointes.baseUrl, queryParameters: {
+      'Filtering': 'free-ebooks',
+      'Sorting': 'relevance',
+      'q': 'subject:Programming',
+    });
+    return BooksModel.fromJson(response.data);
+  }
 }

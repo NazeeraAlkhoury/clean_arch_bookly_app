@@ -5,6 +5,7 @@ import 'package:clean_arch_bookly_app/features/home/data/repositories/home_repos
 import 'package:clean_arch_bookly_app/features/home/domain/repositories/home_repository.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/usecases/get_books_usecase.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/usecases/get_newset_books_usecase.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/usecases/get_similar_usecase.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/controller/home_bloc/home_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -46,12 +47,18 @@ class ServiceLocator {
         homeRepository: getIt<HomeRepository>(),
       ),
     );
+    getIt.registerLazySingleton<GetSimilarUsecase>(
+      () => GetSimilarUsecase(
+        homeRepository: getIt<HomeRepository>(),
+      ),
+    );
 
     //Bloc
     getIt.registerFactory<HomeBloc>(
       () => HomeBloc(
         getBooksUseCase: getIt<GetBooksUseCase>(),
         getNewsetBooksUseCase: getIt<GetNewsetBooksUseCase>(),
+        getSimilarUsecase: getIt<GetSimilarUsecase>(),
       ),
     );
   }
