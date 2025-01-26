@@ -11,9 +11,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ServiceLocator().setupServiceLocator();
-  Bloc.observer = MyBlocObserver();
+
   await Hive.initFlutter();
   Hive.registerAdapter(BooksAdapter());
+
+  await ServiceLocator().setupServiceLocator();
+
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
