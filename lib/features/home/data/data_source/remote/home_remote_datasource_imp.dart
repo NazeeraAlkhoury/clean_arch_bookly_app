@@ -1,12 +1,18 @@
+import 'package:clean_arch_bookly_app/constants.dart';
 import 'package:clean_arch_bookly_app/core/services/api_service.dart';
 import 'package:clean_arch_bookly_app/core/network/app_end_pointes.dart';
+import 'package:clean_arch_bookly_app/core/services/hive_service.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource.dart';
 import 'package:clean_arch_bookly_app/features/home/data/models/books_model/books_model.dart';
 
 class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
   final ApiService apiService;
+  final HiveService hiveService;
 
-  HomeRemoteDatasourceImp({required this.apiService});
+  HomeRemoteDatasourceImp({
+    required this.apiService,
+    required this.hiveService,
+  });
   @override
   Future<BooksModel> getBooks() async {
     final response = await apiService
@@ -16,12 +22,9 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
     });
 
     // printFullText(response.data.toString());
-    return BooksModel.fromJson(response.data);
-
-    // throw DioException(
-    //   requestOptions: response.requestOptions,
-    //   error: 'حدث خطأ في الاتصال بالخادم:',
-    // );
+    final books = BooksModel.fromJson(response.data);
+    hiveService.saveLocalData(books, bookBox);
+    return books;
   }
 
   @override
@@ -34,7 +37,9 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
         'q': 'subject:Programming',
       },
     );
-    return BooksModel.fromJson(response.data);
+    final books = BooksModel.fromJson(response.data);
+    hiveService.saveLocalData(books, newsetBookBox);
+    return books;
   }
 
   @override
@@ -45,6 +50,8 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
       'Sorting': 'relevance',
       'q': 'subject:Programming',
     });
-    return BooksModel.fromJson(response.data);
+    final books = BooksModel.fromJson(response.data);
+    hiveService.saveLocalData(books, simillerBookBox);
+    return books;
   }
 }
