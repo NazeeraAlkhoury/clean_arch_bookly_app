@@ -26,6 +26,7 @@ class FeatureBooksListView extends StatelessWidget {
                   successWidget: (context) => BooksListView(
                     books: state.books!,
                   ),
+                  errMessage: state.errMessage,
                 );
               }),
         ),

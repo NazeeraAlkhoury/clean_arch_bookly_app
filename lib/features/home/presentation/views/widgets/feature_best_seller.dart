@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/core/utils/enums.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/controller/home_bloc/home_bloc.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/controller/home_bloc/home_state.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/best_seller_list.dart';
@@ -23,6 +24,10 @@ class FeatureBestSellerListView extends StatelessWidget {
               successWidget: (context) => BestSellerList(
                 books: state.newsetBooks!,
               ),
+              errMessage:
+                  (state.newsetRequestState == RequestStates.failureState)
+                      ? state.newsetErrMessage
+                      : '',
             );
           }),
     );

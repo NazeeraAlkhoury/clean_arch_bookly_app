@@ -18,11 +18,11 @@ class FeatureSimilerBook extends StatelessWidget {
         value: getIt<HomeBloc>()..add(GetSimilerBooksEvent()),
         child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
           return StateHandlerWidget(
-            state: state.similerRequestState,
-            successWidget: (context) => SimilerBooksList(
-              books: state.similerBooks!,
-            ),
-          );
+              state: state.similerRequestState,
+              successWidget: (context) => SimilerBooksList(
+                    books: state.similerBooks!,
+                  ),
+              errMessage: state.newsetErrMessage);
         }),
       ),
     );

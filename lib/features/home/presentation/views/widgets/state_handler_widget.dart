@@ -18,7 +18,7 @@ class StateHandlerWidget extends StatelessWidget {
         return successWidget(context);
       case RequestStates.failureState:
         return Center(
-          child: Text(errMessage ?? ''),
+          child: Text(errMessage!),
         );
       case RequestStates.loadingState:
         return const Center(
@@ -26,7 +26,7 @@ class StateHandlerWidget extends StatelessWidget {
         );
       case RequestStates.initialState:
         return Center(
-          child: Text(errMessage ?? ''),
+          child: Text(errMessage!),
         );
     }
   }
