@@ -4,6 +4,7 @@ import 'package:clean_arch_bookly_app/core/network/app_end_pointes.dart';
 import 'package:clean_arch_bookly_app/core/services/hive_service.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource.dart';
 import 'package:clean_arch_bookly_app/features/home/data/models/books_model/books_model.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity/books.dart';
 
 class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
   final ApiService apiService;
@@ -23,7 +24,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
 
     // printFullText(response.data.toString());
     final books = BooksModel.fromJson(response.data);
-    hiveService.saveLocalData(books, bookBox);
+    hiveService.saveLocalData<Books>(books, bookBox);
     return books;
   }
 
@@ -38,7 +39,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
       },
     );
     final books = BooksModel.fromJson(response.data);
-    hiveService.saveLocalData(books, newsetBookBox);
+    hiveService.saveLocalData<Books>(books, newsetBookBox);
     return books;
   }
 
@@ -51,7 +52,7 @@ class HomeRemoteDatasourceImp extends HomeRemoteDatasource {
       'q': 'subject:Programming',
     });
     final books = BooksModel.fromJson(response.data);
-    hiveService.saveLocalData(books, simillerBookBox);
+    hiveService.saveLocalData<Books>(books, simillerBookBox);
     return books;
   }
 }
