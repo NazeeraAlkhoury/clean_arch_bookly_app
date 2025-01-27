@@ -6,8 +6,8 @@ class HiveService {
     box.add(data);
   }
 
-  Type fetchLocalData<Type>({required String boxName}) {
+  fetchLocalData<Type>({required String boxName}) {
     var box = Hive.box<Type>(boxName);
-    return box.values.first;
+    return box.isEmpty ? null : box.values.first;
   }
 }

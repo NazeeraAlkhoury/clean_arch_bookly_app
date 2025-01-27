@@ -16,15 +16,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
+  await ServiceLocator().setupServiceLocator();
+
   Hive.registerAdapter(BooksAdapter());
   Hive.registerAdapter(BookItemDataAdapter());
   Hive.registerAdapter(VolumeinfoAdapter());
   Hive.registerAdapter(ImageLinksAdapter());
+
   await Hive.openBox<Books>(bookBox);
   await Hive.openBox<Books>(newsetBookBox);
   await Hive.openBox<Books>(simillerBookBox);
-
-  await ServiceLocator().setupServiceLocator();
 
   Bloc.observer = MyBlocObserver();
 

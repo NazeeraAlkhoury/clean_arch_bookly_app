@@ -8,17 +8,17 @@ class HomeLocalDatasourceImp extends HomeLocalDatasource {
 
   HomeLocalDatasourceImp({required this.hiveService});
   @override
-  Books featchBooks() {
+  Books? featchBooks() {
     return hiveService.fetchLocalData<Books>(boxName: bookBox);
   }
 
   @override
-  Books featchNewsetBooks() {
+  Books? featchNewsetBooks() {
     return hiveService.fetchLocalData<Books>(boxName: newsetBookBox);
   }
 
   @override
-  Books featchSimilerBooks() {
+  Books? featchSimilerBooks() {
     return hiveService.fetchLocalData<Books>(boxName: simillerBookBox);
   }
 }

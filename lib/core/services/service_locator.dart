@@ -1,5 +1,7 @@
 import 'package:clean_arch_bookly_app/core/services/api_service.dart';
 import 'package:clean_arch_bookly_app/core/services/hive_service.dart';
+import 'package:clean_arch_bookly_app/features/home/data/data_source/local/home_local_datasource.dart';
+import 'package:clean_arch_bookly_app/features/home/data/data_source/local/home_local_datasource_imp.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource.dart';
 import 'package:clean_arch_bookly_app/features/home/data/data_source/remote/home_remote_datasource_imp.dart';
 import 'package:clean_arch_bookly_app/features/home/data/repositories/home_repository_imp.dart';
@@ -33,10 +35,18 @@ class ServiceLocator {
       ),
     );
 
+    //LocalDataSource
+    getIt.registerLazySingleton<HomeLocalDatasource>(
+      () => HomeLocalDatasourceImp(
+        hiveService: getIt<HiveService>(),
+      ),
+    );
+
     //Repository
     getIt.registerLazySingleton<HomeRepository>(
       () => HomeRepositoryImp(
         homeRemoteDatasource: getIt<HomeRemoteDatasource>(),
+        homeLocalDatasource: getIt<HomeLocalDatasource>(),
       ),
     );
 
